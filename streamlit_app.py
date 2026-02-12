@@ -253,7 +253,7 @@ def page_customer():
     tc = dff.groupby('CustomerNo').agg(Revenue=('Revenue','sum')).nlargest(10,'Revenue').reset_index().sort_values('Revenue')
     fig4 = go.Figure()
     fig4.add_trace(go.Bar(y=tc['CustomerNo'], x=tc['Revenue'], orientation='h', marker=dict(color='#8b5cf6', line=dict(width=2, color='rgba(255,255,255,0)'), cornerradius=8), text=[f'£{r:,.0f}' for r in tc['Revenue']], textposition='outside', textfont_size=10, opacity=0.9, hovertemplate='<b style="font-size:14px;color:#fff">Customer ID: %{y}</b><br><b>Total Revenue:</b> £%{x:,.0f}<extra></extra>'))
-    apply_layout(fig4, title='Pelanggan dengan Revenue Tertinggi', xaxis_title='Revenue (£)', yaxis_title='')
+    apply_layout(fig4, title='Pelanggan dengan Revenue Tertinggi', xaxis_title='Revenue (£)', yaxis_title='', height=480)
     st.markdown('<div class="section-title">Segmentasi Pelanggan</div>', unsafe_allow_html=True)
     c1,c2 = st.columns(2)
     with c1: show_chart('Jumlah Pelanggan per Segmen','Kategori: Loyal → Inactive',fig1,'Segmentasi')
